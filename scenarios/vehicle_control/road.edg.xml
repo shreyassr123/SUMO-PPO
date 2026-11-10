@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- One lane, one direction, 50 km/h (13.89 m/s). There is no room to
+     overtake, so the controlled vehicle must follow slower vehicles. -->
+<edges>
+    <edge id="road_1" from="start"  to="middle" numLanes="1" speed="13.89"/>
+    <edge id="road_2" from="middle" to="end"    numLanes="1" speed="13.89"/>
+</edges>

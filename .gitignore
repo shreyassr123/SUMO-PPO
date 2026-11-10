@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Experiment outputs (checkpoints, CSV files and plots)
+results/
+
+# SUMO logs and outputs written while experimenting
+*.log
+*output*.xml
+tripinfo*.xml
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

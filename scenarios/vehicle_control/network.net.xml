@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-11-10T23:25:48.900342+00:00 by Eclipse SUMO netconvert 1.26.0
+<netconvertConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <node-files value="C:\Users\shrey\Downloads\SUMO-PPO_v1\SUMO-PPO\scenarios\vehicle_control\road.nod.xml"/>
+        <edge-files value="C:\Users\shrey\Downloads\SUMO-PPO_v1\SUMO-PPO\scenarios\vehicle_control\road.edg.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:\Users\shrey\Downloads\SUMO-PPO_v1\SUMO-PPO\scenarios\vehicle_control\network.net.xml"/>
+    </output>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+    </junctions>
+
+</netconvertConfiguration>
+-->
+
+<net version="1.20" junctionCornerDetail="5" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="0.00,0.00" convBoundary="0.00,0.00,1500.00,0.00" origBoundary="0.00,0.00,1500.00,0.00" projParameter="!"/>
+
+    <edge id=":middle_0" function="internal">
+        <lane id=":middle_0_0" index="0" speed="13.89" length="0.10" shape="750.00,-1.60 750.00,-1.60"/>
+    </edge>
+
+    <edge id="road_1" from="start" to="middle" priority="-1">
+        <lane id="road_1_0" index="0" speed="13.89" length="750.00" shape="0.00,-1.60 750.00,-1.60"/>
+    </edge>
+    <edge id="road_2" from="middle" to="end" priority="-1">
+        <lane id="road_2_0" index="0" speed="13.89" length="750.00" shape="750.00,-1.60 1500.00,-1.60"/>
+    </edge>
+
+    <junction id="end" type="dead_end" x="1500.00" y="0.00" incLanes="road_2_0" intLanes="" shape="1500.00,-3.20 1500.00,0.00"/>
+    <junction id="middle" type="priority" x="750.00" y="0.00" incLanes="road_1_0" intLanes=":middle_0_0" shape="750.00,0.00 750.00,-3.20 750.00,0.00">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+    <junction id="start" type="dead_end" x="0.00" y="0.00" incLanes="" intLanes="" shape="0.00,0.00 0.00,-3.20"/>
+
+    <connection from="road_1" to="road_2" fromLane="0" toLane="0" via=":middle_0_0" dir="s" state="M"/>
+
+    <connection from=":middle_0" to="road_2" fromLane="0" toLane="0" dir="s" state="M"/>
+
+</net>

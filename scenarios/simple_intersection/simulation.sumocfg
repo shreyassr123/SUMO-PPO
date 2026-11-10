@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SUMO configuration for the traffic-signal example.
+     View it with:  sumo-gui -c scenarios/simple_intersection/simulation.sumocfg
+     (the light then runs the fixed program that netconvert generated). -->
+<configuration>
+    <input>
+        <net-file value="network.net.xml"/>
+        <route-files value="traffic.rou.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <step-length value="1"/>
+    </time>
+    <processing>
+        <!-- Remember waiting time for a whole episode (default is 100 s),
+             so per-vehicle waiting times are not cut short. -->
+        <waiting-time-memory value="3600"/>
+        <!-- Vehicles blocked for 300 s are teleported (SUMO default); the
+             environment counts these events. -->
+        <time-to-teleport value="300"/>
+    </processing>
+</configuration>

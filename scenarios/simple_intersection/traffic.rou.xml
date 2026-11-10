@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Traffic demand for the simple intersection.
+
+     Each <flow> inserts vehicles with the given probability per second (a
+     Bernoulli process), so the exact arrival times change with SUMO's random
+     seed. North-south traffic is twice as heavy as east-west traffic, which
+     gives a signal controller something to adapt to.
+
+     Expected hourly volumes per approach:
+         north and south: (0.10 + 0.015 + 0.015) * 3600 = 468 veh/h
+         east and west:   (0.05 + 0.010 + 0.010) * 3600 = 252 veh/h
+-->
+<routes>
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" minGap="2.5"
+           maxSpeed="16.67" speedFactor="normc(1,0.1,0.8,1.2)"/>
+
+    <!-- Route names: origin_destination. A vehicle from the north going to
+         the east turns left (from the driver's point of view). -->
+    <route id="north_south" edges="north_in south_out"/>
+    <route id="north_east"  edges="north_in east_out"/>
+    <route id="north_west"  edges="north_in west_out"/>
+    <route id="south_north" edges="south_in north_out"/>
+    <route id="south_east"  edges="south_in east_out"/>
+    <route id="south_west"  edges="south_in west_out"/>
+    <route id="east_west"   edges="east_in west_out"/>
+    <route id="east_north"  edges="east_in north_out"/>
+    <route id="east_south"  edges="east_in south_out"/>
+    <route id="west_east"   edges="west_in east_out"/>
+    <route id="west_north"  edges="west_in north_out"/>
+    <route id="west_south"  edges="west_in south_out"/>
+
+    <flow id="flow_north_south" route="north_south" type="car" begin="0" end="3600" probability="0.10"  departSpeed="max"/>
+    <flow id="flow_north_east"  route="north_east"  type="car" begin="0" end="3600" probability="0.015" departSpeed="max"/>
+    <flow id="flow_north_west"  route="north_west"  type="car" begin="0" end="3600" probability="0.015" departSpeed="max"/>
+    <flow id="flow_south_north" route="south_north" type="car" begin="0" end="3600" probability="0.10"  departSpeed="max"/>
+    <flow id="flow_south_east"  route="south_east"  type="car" begin="0" end="3600" probability="0.015" departSpeed="max"/>
+    <flow id="flow_south_west"  route="south_west"  type="car" begin="0" end="3600" probability="0.015" departSpeed="max"/>
+    <flow id="flow_east_west"   route="east_west"   type="car" begin="0" end="3600" probability="0.05"  departSpeed="max"/>
+    <flow id="flow_east_north"  route="east_north"  type="car" begin="0" end="3600" probability="0.01"  departSpeed="max"/>
+    <flow id="flow_east_south"  route="east_south"  type="car" begin="0" end="3600" probability="0.01"  departSpeed="max"/>
+    <flow id="flow_west_east"   route="west_east"   type="car" begin="0" end="3600" probability="0.05"  departSpeed="max"/>
+    <flow id="flow_west_north"  route="west_north"  type="car" begin="0" end="3600" probability="0.01"  departSpeed="max"/>
+    <flow id="flow_west_south"  route="west_south"  type="car" begin="0" end="3600" probability="0.01"  departSpeed="max"/>
+</routes>

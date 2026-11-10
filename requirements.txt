@@ -1,0 +1,15 @@
+# Python packages for SUMO-PPO (Python 3.9 or newer).
+# PyTorch: the plain `pip install torch` gives a working CPU build. For a GPU
+# build, use the command from https://pytorch.org/get-started/locally/ instead
+# (a GPU is not needed for the small networks used here).
+numpy>=1.24
+torch>=2.0
+gymnasium>=0.29
+matplotlib>=3.7
+pytest>=7.0
+
+# SUMO's Python interface (traci, sumolib) is NOT listed here, because it
+# should match your SUMO installation. See "Installation" in README.md:
+#   - with SUMO installed from the official installer or package manager and
+#     SUMO_HOME set, nothing more is needed;
+#   - otherwise `pip install eclipse-sumo traci` installs both SUMO and TraCI.

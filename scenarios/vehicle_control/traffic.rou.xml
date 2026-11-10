@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Traffic for the vehicle-control example.
+
+     Background cars and slow vans are inserted randomly (probability per
+     second) from t = 0 and are driven by SUMO's default car-following model.
+     The controlled vehicle "ego" departs at t = 60 s, by which time there is
+     traffic ahead of it. Its vType has no driver imperfection (sigma = 0) and
+     a speed factor of exactly 1, so under SUMO control it drives at the speed
+     limit whenever the road ahead is clear.
+-->
+<routes>
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" minGap="2.5"
+           maxSpeed="16.67" speedFactor="normc(1,0.1,0.8,1.2)"/>
+    <vType id="slow_van" accel="1.5" decel="4.0" sigma="0.5" length="7.0" minGap="2.5"
+           maxSpeed="8.33" color="0.4,0.6,1"/>
+    <vType id="controlled" accel="2.6" decel="4.5" sigma="0" length="5.0" minGap="2.5"
+           maxSpeed="16.67" speedFactor="1" speedDev="0" color="1,0,0"/>
+
+    <route id="main" edges="road_1 road_2"/>
+
+    <flow id="background_cars" type="car" route="main" begin="0" end="3600" probability="0.06" departSpeed="max"/>
+    <flow id="slow_vans" type="slow_van" route="main" begin="0" end="3600" probability="0.015" departSpeed="max"/>
+
+    <!-- Vehicles must appear in order of departure time, so "ego" comes after
+         the flows that begin at t = 0. -->
+    <vehicle id="ego" type="controlled" route="main" depart="60" departSpeed="max"/>
+</routes>

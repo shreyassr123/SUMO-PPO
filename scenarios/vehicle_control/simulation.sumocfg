@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SUMO configuration for the vehicle-control example.
+     View it with:  sumo-gui -c scenarios/vehicle_control/simulation.sumocfg
+     (the red vehicle is "ego", here driven by SUMO itself). -->
+<configuration>
+    <input>
+        <net-file value="network.net.xml"/>
+        <route-files value="traffic.rou.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <step-length value="1"/>
+    </time>
+</configuration>

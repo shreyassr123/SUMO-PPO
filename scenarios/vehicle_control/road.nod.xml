@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A straight 1.5 km road made of two 750 m sections. -->
+<nodes>
+    <node id="start"  x="0.0"    y="0.0" type="priority"/>
+    <node id="middle" x="750.0"  y="0.0" type="priority"/>
+    <node id="end"    x="1500.0" y="0.0" type="priority"/>
+</nodes>

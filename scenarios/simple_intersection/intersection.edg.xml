@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Single-lane roads, 50 km/h (13.89 m/s). "*_in" edges lead to the
+     intersection, "*_out" edges lead away from it. -->
+<edges>
+    <edge id="north_in"  from="north"  to="center" numLanes="1" speed="13.89"/>
+    <edge id="south_in"  from="south"  to="center" numLanes="1" speed="13.89"/>
+    <edge id="east_in"   from="east"   to="center" numLanes="1" speed="13.89"/>
+    <edge id="west_in"   from="west"   to="center" numLanes="1" speed="13.89"/>
+
+    <edge id="north_out" from="center" to="north"  numLanes="1" speed="13.89"/>
+    <edge id="south_out" from="center" to="south"  numLanes="1" speed="13.89"/>
+    <edge id="east_out"  from="center" to="east"   numLanes="1" speed="13.89"/>
+    <edge id="west_out"  from="center" to="west"   numLanes="1" speed="13.89"/>
+</edges>
