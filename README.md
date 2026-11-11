@@ -169,4 +169,4 @@ This is a discrete-action, single-agent starting point. It does not provide mult
 
 The PPO learner was adapted from the `Mobility_PPO` research baseline and reorganised for general episode-based control. SUMO is developed by DLR and contributors and is not distributed with this repository.
 
-**Licence:** Pending confirmation of the rights and permission to release the adapted research code. After approval, add an MIT `LICENSE` file to the repository root and update this paragraph to link to it.
+**Licence:** [MIT](LICENSE)
