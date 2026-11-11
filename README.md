@@ -153,7 +153,7 @@ Changing observation or action dimensions requires retraining, because existing 
 
 ## Verification and reproducibility
 
-**Local verification reported for 10 November 2026:** all **64 tests passed** on Windows with **SUMO 1.26.0** and PyTorch installed. Baseline runs, PPO training, checkpoint loading and GUI execution were also checked. This result refers to the locally tested version; newly pushed files or changes should be retested before distribution. The exact PyTorch version should be confirmed from the local installation before recording it here.
+**Local verification reported for 10 November 2026:** all **64 tests passed** on Windows with **SUMO 1.26.0** and PyTorch installed. Baseline runs, PPO training, checkpoint loading and GUI execution were also checked. 
 
 To run the checks on another machine:
 
