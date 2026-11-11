@@ -1,6 +1,6 @@
 # SUMO-PPO
 
-A Python framework for training and evaluating Proximal Policy Optimisation (PPO) agents in [SUMO](https://eclipse.dev/sumo/). It provides traffic-signal and vehicle-control examples that share the same PPO implementation. The code is intended as a starting point for student projects: observations, actions, rewards and scenarios can be changed without editing the learning algorithm.
+A Python framework for training and evaluating Proximal Policy Optimisation (PPO) agents in [SUMO](https://eclipse.dev/sumo/). It provides traffic-signal and vehicle-control examples that share the same PPO implementation. The observations, actions, rewards and scenarios can be changed without editing the learning algorithm.
 
 ## Environments
 
