@@ -857,9 +857,3 @@ recommendations for event visitors. The event-specific parts of that project
 and parking logic, action masks) were removed; the learning algorithm was
 restructured into a general, episode-based PPO.
 
-SUMO is developed by the German Aerospace Center (DLR) and contributors and
-is distributed under the Eclipse Public License 2.0; this repository does not
-include SUMO itself.
-
-No licence has been chosen for this repository yet. Add a `LICENSE` file
-before publishing it.
