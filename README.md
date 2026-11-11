@@ -5,9 +5,7 @@ A small, readable framework for reinforcement learning experiments in the
 from-scratch implementation of Proximal Policy Optimisation (PPO).
 
 It is intended as a starting point for student projects in traffic-signal
-control, vehicle control and related traffic-management problems. It is a
-basic educational and research framework, **not** a validated traffic
-controller.
+control, vehicle control and related traffic-management problems. 
 
 ---
 
