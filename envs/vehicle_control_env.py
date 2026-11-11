@@ -6,7 +6,7 @@ All other vehicles follow SUMO's default car-following model.
 
 The agent sets a *desired* speed. SUMO's safety checks stay active (speed
 mode 31), so SUMO still lowers the speed whenever the desired speed would
-cause a rear-end collision. See the README section "Vehicle-control example".
+cause a rear-end collision. Full specification: docs/environments.md.
 """
 
 from __future__ import annotations

@@ -1,8 +1,19 @@
 # PPO in this repository
 
 This note follows one PPO iteration through the code and connects each step
-to its equation. It assumes the basic ideas from the README (policy, value,
-return, advantage).
+to its equation.
+
+**Key terms.** An *observation* s is what the agent sees at a decision point;
+an *action* a is the integer it chooses; the *reward* r is the number returned
+after each action. The agent maximises the *return*
+G = r₀ + γr₁ + γ²r₂ + … with discount factor γ. An *episode* runs from
+`reset()` until the task ends (*terminated*) or a time limit stops it
+(*truncated*). The *policy* π(a|s) gives a probability for each action; the
+*value function* V(s) is the expected return from s. The *actor* network
+represents the policy and the *critic* network the value function. A
+*rollout* is a batch of experience collected with the current policy before
+each update, and the *advantage* A(s, a) says how much better an action
+turned out than the critic expected.
 
 Files: `ppo/networks.py`, `ppo/buffer.py`, `ppo/agent.py`, `ppo/rollout.py`.
 

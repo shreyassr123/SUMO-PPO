@@ -23,8 +23,43 @@ problem-specific decisions live in an environment class.
 
 ## 2. Creating a new environment class
 
-Start from the template in README Section 10, or copy the example closest to
-your problem. A subclass of `SumoEnvironment` provides:
+Copy the example closest to your problem, or start from this template:
+
+```python
+# envs/my_env.py
+import numpy as np
+from gymnasium import spaces
+from .sumo_base import SCENARIO_DIR, SumoEnvironment
+
+class MyEnv(SumoEnvironment):
+    def __init__(self, gui=False, config_file=SCENARIO_DIR / "my_scenario" / "simulation.sumocfg"):
+        super().__init__(config_file, gui=gui)
+        self.observation_space = spaces.Box(0.0, 1.0, shape=(3,), dtype=np.float32)
+        self.action_space = spaces.Discrete(2)
+
+    def on_reset(self):
+        self.start_time = self.simulation_time
+
+    def get_observation(self):
+        return np.zeros(3, dtype=np.float32)          # read SUMO state via self.sumo
+
+    def get_info(self):
+        return {}
+
+    def step(self, action):
+        action = self.check_action(action)
+        # ... send TraCI commands for the action via self.sumo ...
+        self.sumo.simulationStep()
+        reward = 0.0                                  # your calculate_reward()
+        truncated = self.simulation_time - self.start_time >= 600
+        return self.get_observation(), reward, False, truncated, self.get_info()
+```
+
+Then register it in `envs/__init__.py`
+(`SUMO_ENVIRONMENTS = {..., "my_env": MyEnv}`), and
+`python scripts/train.py --env my_env` works.
+
+A subclass of `SumoEnvironment` provides:
 
 | Method / attribute | Purpose |
 |---|---|
@@ -34,8 +69,7 @@ your problem. A subclass of `SumoEnvironment` provides:
 | `step(action)` | validate the action (`check_action`), send TraCI commands, advance SUMO, compute reward and episode end, return the usual 5-tuple |
 | `get_info()` | return a dict of metrics; numeric entries are saved to the CSV files automatically |
 
-Register the class in `SUMO_ENVIRONMENTS` in `envs/__init__.py`. If its
-baselines need extra settings, add them to `scripts/run_baseline.py`.
+If its baselines need extra settings, add them to `scripts/run_baseline.py`.
 
 Useful base-class helpers: `self.sumo` (the TraCI connection),
 `self.simulation_time`, `self.step_length`, `self.steps_for(seconds)`.

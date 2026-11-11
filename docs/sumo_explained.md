@@ -37,7 +37,14 @@ its position in the light's signal state string.
 
 The traffic-signal environment reads two things from `network.net.xml`
 (`read_signal_layout()`): the green phases of the light's default program, and
-its incoming edges with their lane lengths.
+its incoming edges with their lane lengths and speed limits.
+
+The city map in `scenarios/city_grid/` is different: its network file comes
+ready-built from the original project, so it has no node and edge sources and
+is not touched by `build_networks.py`. Its roads have a pavement lane
+(`allow="pedestrian"`) next to the traffic lanes, and its junctions have
+pedestrian *crossings* and *walking areas*, which appear in the network as
+special edges whose IDs start with `:`.
 
 ## 3. Route files
 
@@ -123,9 +130,22 @@ connection (link), in `linkIndex` order:
 Normally SUMO runs the light's program from the network file by itself. The
 environment instead calls `trafficlight.setRedYellowGreenState(tls_id, state)`,
 which replaces the program by the given state until it is changed again. This
-gives the environment complete control of timing, and it builds the yellow
-state itself (`yellow_state()`): every link that is green now but will not be
-green in the next phase shows `y`, followed by an all-red state.
+gives the environment complete control of timing, and it builds the
+clearance states itself: in `yellow_state()` every link that is green now but
+will not be green in the next phase shows `y`; `all_red_state()` then shows red
+on every link except those that are green in both phases.
+
+Links that start on a walking area are pedestrian crossings. Real programs
+often end a green in two steps: first the pedestrian signals turn red while
+vehicles keep their green, then the vehicles get yellow. The environment
+treats such a pair of phases as one green *stage*, so the agent chooses
+between traffic directions rather than between pedestrian sub-phases.
+
+At the start of an episode SUMO's own program is still running. The
+environment waits until it shows one of the green stages and only then sets
+the state, so drivers never see an abrupt change. With
+`sumo_controls_signal=True` it never sets the state and only observes the
+program (the `sumo_program` baseline).
 
 ## 7. Vehicle control
 
@@ -155,7 +175,12 @@ After building the networks:
 ```bash
 sumo-gui -c scenarios/simple_intersection/simulation.sumocfg
 sumo-gui -c scenarios/vehicle_control/simulation.sumocfg
+sumo-gui -c scenarios/city_grid/simulation.sumocfg
 ```
+
+The city takes a few seconds to load. To find junction 517, use
+*Locate → Junctions* (or *Locate → Traffic Lights*) in the menu and type
+`517`.
 
 Press the green *Run* triangle to start. Useful controls:
 
